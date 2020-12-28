@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :require_user_logged_in, only: [:index, :show,:new,:new,:create, :edit, :update, :destroy ]
   
   def index
       @messages = Message.order(id: :desc).page(params[:page])

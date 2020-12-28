@@ -15,5 +15,5 @@
   </tr>
 </table>
 
-<%= link_to 'このメッセージを編集する', edit_message_path(@message), class: 'btn btn-light' %>
+<%= link_to 'このメッセージを編集する', edit_message_path(@message), class: 'btn btn-light'  'btn btn-success' %>
 <%= link_to 'このメッセージを削除する', @message, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
