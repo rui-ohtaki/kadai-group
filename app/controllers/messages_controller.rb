@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
+  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  
   def index
       @messages = Message.order(id: :desc).page(params[:page]).per(25)
   end
 
   def show
-      @message = Message.find(params[:id])
   end
 
   def new
@@ -24,11 +25,9 @@ class MessagesController < ApplicationController
   end
 
   def edit
-      @message = Message.find(params[:id])
   end
 
   def update
-      @message = Message.find(params[:id])
   
       if @message.update(message_params)
         flash[:success] = 'Message は正常に更新されました'
@@ -40,17 +39,21 @@ class MessagesController < ApplicationController
   end
 
     def destroy
-        @message = Message.find(params[:id])
+        set_message
         @message.destroy
     
         flash[:success] = 'Message は正常に削除されました'
         redirect_to messages_url
     end
   
+  private
+
+    def set_message
+        @message = Message.find(params[:id])
+    end
+    
   # Strong Parameter
   def message_params
       params.require(:message).permit(:content)
   end
-  
-  
 end
