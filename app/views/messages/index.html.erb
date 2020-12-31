@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <th>id</th>
+        <th>ユーザー名</th>
         <th>タイトル</th>
         <th>メッセージ</th>
       </tr>
@@ -14,6 +15,7 @@
       <% @messages.each do |message| %>
         <tr>
           <td><%= link_to message.id, message %></td>
+          <th><%= @user_name %></th>
           <td><%= message.title %></td>
           <td><%= message.content %></td>
         </tr>

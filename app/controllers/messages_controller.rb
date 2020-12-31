@@ -7,15 +7,17 @@ class MessagesController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: @message.user_id)
   end
 
   def new
       @message = Message.new
+      
   end
 
   def create
-      @message = Message.new(message_params)
-
+      @message = Message.new(message_params, user_id: @current_user.id)
+      
       if @message.save
         flash[:success] = 'Message が正常に投稿されました'
         redirect_to @message

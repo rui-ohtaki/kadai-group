@@ -6,6 +6,10 @@
     <td><%= @message.id %></td>
   </tr>
   <tr>
+    <th>ユーザー名</th>
+    <td><%=<%= @user.name,"users/#{@user.id}") %></td>
+  </tr>  
+  <tr>
     <th>タイトル</th>
     <td><%= @message.title %></td>
   </tr>
