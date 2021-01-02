@@ -38,11 +38,11 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
-gem'pry-byebug'
-gem'pry-rails'
-gem 'pry-stack_explorer'
-gem'better_errors'
-gem'binding_of_caller'
+gem 'pry-byebug'
+gem 'pry-rails'
+gem  'pry-stack_explorer'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

@@ -13,7 +13,8 @@ class MessagesController < ApplicationController
 
   def new
       @message = Message.new
-      
+      @message.user_id = current_user.id
+      @message.save
   end
 
   def create
