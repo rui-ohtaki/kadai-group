@@ -7,8 +7,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find_by(id: params[:id])
-    @user = User.find_by(id: @message.user_id)
+     @message = Message.find_by(id: params[:id])
   end
 
   def new
@@ -18,7 +17,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-      @message = Message.new(message_params, user_id: @current_user.id)
+      @message = Message.new(message_params)
       
       if @message.save
         flash[:success] = 'Message が正常に投稿されました'
@@ -59,6 +58,6 @@ class MessagesController < ApplicationController
     
   # Strong Parameter
   def message_params
-      params.require(:message).permit(:content, :title)
+      params.require(:message).permit(:content, :title).merge(user_id: current_user.id)
   end
 end
